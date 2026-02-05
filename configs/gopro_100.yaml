@@ -1,0 +1,56 @@
+# GoPro 100 samples config
+dataset:
+  name: gopro
+  root: /data/projects/alutis/zzt/blurgen/datasets/GOPRO_Large
+  train_dir: train
+  test_dir: test
+  sharp_subdir: sharp
+  flow_fwd_subdir: flow_cn_pix  # center -> next
+  flow_bwd_subdir: flow_cp_pix  # center -> prev
+
+output:
+  root: /data/projects/alutis/zzt/blurgen/runs/blurgen_100
+  blur_subdir: blur
+  traj_subdir: trajectories
+  sharp_subdir: sharp
+
+params:
+  shutter_length:
+    distribution: uniform
+    min: 0.5
+    max: 2.0
+  
+  camera_acceleration:
+    distribution: uniform
+    min: -4.5
+    max: 4.5
+  
+  lateral_acceleration:
+    distribution: uniform
+    min: -1.7
+    max: 1.7
+  
+  shutter_profile:
+    distribution: fixed
+    value: box
+  
+  trajectory_profile:
+    distribution: fixed
+    value: acceleration
+  
+  object_model:
+    distribution: fixed
+    value: se2
+  
+  bg_fill:
+    distribution: fixed
+    value: inpaint
+  
+  num_subframes:
+    distribution: fixed
+    value: 32
+
+generation:
+  seed: 42
+  train_samples: 100
+  test_samples: 0

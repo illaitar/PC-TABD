@@ -1,0 +1,146 @@
+# Example configuration for GoPro dataset
+# BlurGen CSV Generator Configuration
+
+dataset:
+  name: gopro
+  root: /path/to/GoPro_Large
+  train_dir: train
+  test_dir: test
+  sharp_pattern: "*.png"
+  flow_pattern: "*.npy"
+
+output:
+  root: /path/to/output
+  blur_subdir: blur
+  flow_subdir: flow
+  traj_subdir: trajectories
+  sharp_subdir: sharp
+
+params:
+  # Shutter parameters
+  shutter_length:
+    distribution: uniform
+    min: 0.5
+    max: 2.0
+  
+  shutter_profile:
+    distribution: fixed
+    value: box
+  
+  shutter_skew:
+    distribution: uniform
+    min: 0.3
+    max: 0.7
+  
+  num_subframes:
+    distribution: fixed
+    value: 32
+  
+  # Camera motion
+  camera_translation_scale:
+    distribution: uniform
+    min: 0.3
+    max: 1.5
+  
+  camera_rotation_scale:
+    distribution: uniform
+    min: 0.0
+    max: 0.3
+  
+  camera_jerk:
+    distribution: uniform
+    min: 0.0
+    max: 0.05
+  
+  camera_acceleration:
+    distribution: uniform
+    min: -4.5
+    max: 4.5
+  
+  lateral_acceleration:
+    distribution: uniform
+    min: -1.7
+    max: 1.7
+  
+  rolling_shutter_strength:
+    distribution: uniform
+    min: 0.0
+    max: 0.2
+  
+  # Trajectory
+  trajectory_profile:
+    distribution: fixed
+    value: acceleration
+  
+  smooth_walk_jerk:
+    distribution: uniform
+    min: 0.0
+    max: 0.02
+  
+  # Object motion
+  object_scale:
+    distribution: uniform
+    min: 0.5
+    max: 2.0
+  
+  object_direction:
+    distribution: fixed
+    value: 0.0
+  
+  object_nonrigid_noise:
+    distribution: uniform
+    min: 0.0
+    max: 0.05
+  
+  object_model:
+    distribution: fixed
+    value: se2
+  
+  # ISP
+  noise_level:
+    distribution: uniform
+    min: 0.0
+    max: 0.01
+  
+  noise_poisson_scale:
+    distribution: uniform
+    min: 0.0
+    max: 0.005
+  
+  motion_sharpening:
+    distribution: uniform
+    min: 0.0
+    max: 0.05
+  
+  exposure_gain:
+    distribution: uniform
+    min: 0.95
+    max: 1.05
+  
+  # Depth
+  depth_parallax_scale:
+    distribution: uniform
+    min: 0.8
+    max: 1.2
+  
+  # SE2
+  se2_rotation_scale:
+    distribution: uniform
+    min: 0.9
+    max: 1.1
+  
+  # Visibility
+  occlusion_softness:
+    distribution: uniform
+    min: 0.0
+    max: 0.05
+  
+  # Background fill
+  bg_fill:
+    distribution: fixed
+    value: inpaint
+
+generation:
+  seed: 42
+  train_samples: null  # null = all samples
+  test_samples: null

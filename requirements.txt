@@ -1,0 +1,14 @@
+# Core dependencies
+torch>=1.10.0
+numpy>=1.20.0
+opencv-python>=4.5.0
+scipy>=1.7.0
+pillow>=8.0.0
+pyyaml>=5.4.0
+tqdm>=4.60.0
+
+# Development dependencies
+pytest>=7.0.0
+pytest-cov>=3.0.0
+black>=22.0.0
+isort>=5.10.0
